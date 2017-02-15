@@ -1,0 +1,12 @@
+{
+        "server":"jp.ssip.club",
+        "server_port":23333,
+	"local_address":"localhost",	
+        "local_port":1491,
+        "password":"73269867",
+        "timeout":300,
+        "method":"rc4-md5",
+        "fast_open": false,
+        "workers": 1
+}
+
