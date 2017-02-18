@@ -1,0 +1,10 @@
+{
+        "server":"localhost",
+        "server_port":1895,
+        "local_address":"localhost", 
+        "local_port":1491,
+        "password":"!barfoo!",
+        "timeout":300,
+        "method":"chacha20-ietf"
+}
+

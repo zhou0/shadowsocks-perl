@@ -1,0 +1,70 @@
+---
+abstract: 'the asynchronous, non-blocking shadowsocks client and server. '
+author:
+  - 'Li ZHOU <lzh@cpan.org>'
+build_requires:
+  ExtUtils::MakeMaker: '0'
+  File::Spec: '0'
+  IO::Handle: '0'
+  IPC::Open3: '0'
+  Module::Build: '0.28'
+  Test::CheckDeps: '0.010'
+  Test::More: '0.94'
+  blib: '1.01'
+configure_requires:
+  ExtUtils::MakeMaker: '0'
+  Module::Build: '0.28'
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 6.008, CPAN::Meta::Converter version 2.150005'
+keywords:
+  - socks
+  - shadowsocks
+  - rfc1928
+  - Great
+  - Firewall
+  - Internet
+  - censorship
+  - in
+  - China
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: '1.4'
+name: Net-Shadowsocks
+provides:
+  Net::Shadowsocks:
+    file: lib/Net/Shadowsocks.pm
+    version: v0.8.2
+  Net::Shadowsocks::Client:
+    file: lib/Net/Shadowsocks/Client.pm
+    version: v0.8.2
+  Net::Shadowsocks::Server:
+    file: lib/Net/Shadowsocks/Server.pm
+    version: v0.8.2
+requires:
+  AnyEvent: '4.45'
+  AnyEvent::Handle: '0'
+  AnyEvent::Log: '0'
+  AnyEvent::Socket: '0'
+  Carp: '0'
+  Crypt::Cipher::AES: '0'
+  Crypt::Cipher::Camellia: '0'
+  Crypt::Cipher::RC6: '0'
+  Crypt::Mode::CBC: '0'
+  Crypt::Mode::CFB: '0'
+  Crypt::Mode::CTR: '0'
+  Crypt::Mode::OFB: '0'
+  Crypt::NaCl::Sodium: v1.0.8.0
+  Crypt::Random: '1.25'
+  Digest::MD5: '2.55'
+  Digest::SHA: '5.96'
+  Getopt::Std: '0'
+  IO::Socket::Socks: '0.73'
+  JSON: '2.90'
+  Mcrypt: v2.5.7.0
+  Socket: '2.021'
+  perl: '5.006'
+  strict: '0'
+  warnings: '0'
+version: 0.8.2
+x_serialization_backend: 'YAML::Tiny version 1.69'

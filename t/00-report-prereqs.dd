@@ -1,0 +1,67 @@
+do { my $x = {
+       'build' => {
+                    'requires' => {
+                                    'Module::Build' => '0.28'
+                                  }
+                  },
+       'configure' => {
+                        'requires' => {
+                                        'ExtUtils::MakeMaker' => '0',
+                                        'Module::Build' => '0.28'
+                                      }
+                      },
+       'develop' => {
+                      'requires' => {
+                                      'Pod::Coverage::TrustPod' => '0',
+                                      'Test::MinimumVersion' => '0',
+                                      'Test::More' => '0',
+                                      'Test::Pod' => '1.41',
+                                      'Test::Pod::Coverage' => '1.08',
+                                      'Test::Spelling' => '0.12'
+                                    }
+                    },
+       'runtime' => {
+                      'requires' => {
+                                      'AnyEvent' => '4.45',
+                                      'AnyEvent::Handle' => '0',
+                                      'AnyEvent::Log' => '0',
+                                      'AnyEvent::Socket' => '0',
+                                      'Carp' => '0',
+                                      'Crypt::Cipher::AES' => '0',
+                                      'Crypt::Cipher::Camellia' => '0',
+                                      'Crypt::Cipher::RC6' => '0',
+                                      'Crypt::Mode::CBC' => '0',
+                                      'Crypt::Mode::CFB' => '0',
+                                      'Crypt::Mode::CTR' => '0',
+                                      'Crypt::Mode::OFB' => '0',
+                                      'Crypt::NaCl::Sodium' => 'v1.0.8.0',
+                                      'Crypt::Random' => '1.25',
+                                      'Digest::MD5' => '2.55',
+                                      'Digest::SHA' => '5.96',
+                                      'Getopt::Std' => '0',
+                                      'IO::Socket::Socks' => '0.73',
+                                      'JSON' => '2.90',
+                                      'Mcrypt' => 'v2.5.7.0',
+                                      'Socket' => '2.021',
+                                      'perl' => '5.006',
+                                      'strict' => '0',
+                                      'warnings' => '0'
+                                    }
+                    },
+       'test' => {
+                   'recommends' => {
+                                     'CPAN::Meta' => '2.120900'
+                                   },
+                   'requires' => {
+                                   'ExtUtils::MakeMaker' => '0',
+                                   'File::Spec' => '0',
+                                   'IO::Handle' => '0',
+                                   'IPC::Open3' => '0',
+                                   'Test::CheckDeps' => '0.010',
+                                   'Test::More' => '0.94',
+                                   'blib' => '1.01'
+                                 }
+                 }
+     };
+  $x;
+ }
