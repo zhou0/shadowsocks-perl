@@ -3,7 +3,8 @@
 Net::Shadowsocks - the asynchronous, non-blocking shadowsocks client and server. 
 
 [![Build Status](https://travis-ci.org/zhou0/shadowsocks-perl.png?branch=master)](https://travis-ci.org/zhou0/shadowsocks-perl)
-
+[![](https://images.microbadger.com/badges/image/fgfw/shadowsocks-perl.svg)](https://microbadger.com/images/fgfw/shadowsocks-perl "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/fgfw/shadowsocks-perl.svg)](https://microbadger.com/images/fgfw/shadowsocks-perl "Get your own version badge on microbadger.com")
 # VERSION
 
 Version 0.9.2
