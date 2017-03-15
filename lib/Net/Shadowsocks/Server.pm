@@ -658,7 +658,7 @@
             {
                     my $client_socket = shift;
                     setsockopt($client_socket,,SOL_SOCKET, SO_REUSEADDR, 1);
-                    if ( $_osname eq 'linux' ) 
+                    if ( $_osname eq 'linux' and  -r '/proc/sys/net/ipv4/tcp_fastopen') 
                     {
                         my $_tfo = do 
                         {
