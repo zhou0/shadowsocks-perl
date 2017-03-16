@@ -658,17 +658,20 @@
             {
                     my $client_socket = shift;
                     setsockopt($client_socket,,SOL_SOCKET, SO_REUSEADDR, 1);
-                    if ( $_osname eq 'linux' and  -r '/proc/sys/net/ipv4/tcp_fastopen') 
+                    if ( $_osname eq 'linux' and  -e '/proc/sys/net/ipv4/tcp_fastopen') 
                     {
-                        my $_tfo = do 
-                        {
-                            local ( @ARGV, $/ ) = '/proc/sys/net/ipv4/tcp_fastopen';<>;
-                        };
-                        if ( $_tfo == 2 or $_tfo == 3 ) 
-                        {
-                            setsockopt( $client_socket, IPPROTO_TCP, TCP_FASTOPEN, 1 );
-                            AE::log info => "TCP Fast Open enabled on server.";
-                        }
+		        if (-r '/proc/sys/net/ipv4/tcp_fastopen')
+			{
+                            my $_tfo = do 
+                            {
+                                local ( @ARGV, $/ ) = '/proc/sys/net/ipv4/tcp_fastopen';<>;
+                            };
+                            if ( $_tfo == 2 or $_tfo == 3 ) 
+                            {
+                                setsockopt( $client_socket, IPPROTO_TCP, TCP_FASTOPEN, 1 );
+                                AE::log info => "TCP Fast Open enabled on server.";
+                            }
+			}
                     }
                     elsif ( $_osname eq 'darwin' ) 
                     {
