@@ -1,0 +1,48 @@
+Revision history for Net-Shadowsocks
+
+0.5.1   01-30-2017/20:35(GMT+8)
+        First version, released on an unsuspecting world.
+0.6.0   02-05-2017/23:01(GMT+8)
+        add server module,update pod.
+0.6.1   02-06-2017/23:44(GMT+8)
+        add des-cfb encryption method support
+0.6.2     2017-02-08 22:50:01+08:00 Asia/Shanghai
+        add cpanfile
+0.6.3
+        add aes-128-cfb support  
+0.7.0     2017-02-13 00:35:51+08:00 Asia/Shanghai
+        major release with full support of RC4-MD5 RC4-SHA AES-128-CBC AES-128-CFB AES-128-OFB AES-256-CBC AES-256-CFB AES-256-OFB
+        DES supoort removed
+        make RC4-MD5 the default cipher
+        experimental support of RC6 added
+        experimental server support of TCP Fast Open added
+        Split into 3 modules
+        Better pod docuemnt
+0.7.1     2017-02-13 17:40:11+08:00 Asia/Shanghai 
+        fix _initilize_cipher()causing compile errors,
+          RC6 encryption method fully working
+          fix pod,lower prereqs.        
+0.8.0     2017-02-14 23:18:24+08:00 Asia/Shanghai 
+        supports 28 encryption methods 
+        fix pod errors
+0.8.1     2017-02-17 16:58:44+08:00 Asia/Shanghai 
+        add ssclient.pl and ssserver.pl
+        fix _initialize_cipher()
+0.8.2     2017-02-18 15:21:13+08:00 Asia/Shanghai 
+        many small fixes and enhancements
+0.9.0     2017-02-24 23:04:22+08:00 Asia/Shanghai
+        add aead ciphers support
+0.9.1     2017-03-11 14:39:45+08:00 Asia/Shanghai
+        remove rc4 support, add support for rabbit and spritz ciphers
+        add travis-ci and docker support 
+0.9.2     2017-03-28 23:48:27+08:00 Asia/Taipei
+        supports rc4-md5 again 
+        remove Net::SSLeay dependency
+        replace Crypt::Random with Crypt::PRNG
+        disable rabbit cipher because it cause build fail with clang
+0.9.3     2017-04-14 19:31:53+08:00 Asia/Taipei
+        correct chacha20-ietf en/decryption 
+0.9.3.1   2017-04-19 23:16:14+08:00 Asia/Taipei
+        fix bugs in gcm mode
+0.9.3.2   2017-04-22 12:34:16+08:00 Asia/Shanghai
+        fix --version output 
