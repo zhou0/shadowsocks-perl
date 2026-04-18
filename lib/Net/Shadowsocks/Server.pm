@@ -189,7 +189,7 @@
                                                             my $data_len_pt;
                                                             eval
                                                             {
-                                                                $data_len_pt = $decryptor->ietf_decrypt($data_len_ct, "", $decrypt_nonce, $decrypt_subkey);
+                                                                $data_len_pt = ($self->{method} =~ /^x/ ? $decryptor->can("xietf_decrypt") : $decryptor->can("ietf_decrypt"))->($decryptor, $data_len_ct, "", $decrypt_nonce, $decrypt_subkey);
                                                             };
                                                             if ( $@ ) 
                                                             {
@@ -208,7 +208,7 @@
                                                                 else
                                                                 {
                                                                     $decrypt_nonce = $decrypt_nonce->increment();
-                                                                    $decrypted_data .= $decryptor->ietf_decrypt(substr($incoming_data,18,$data_len + 16),"",$decrypt_nonce,$decrypt_subkey);
+                                                                    $decrypted_data .= ($self->{method} =~ /^x/ ? $decryptor->can("xietf_decrypt") : $decryptor->can("ietf_decrypt"))->($decryptor, substr($incoming_data,18,$data_len + 16),"",$decrypt_nonce,$decrypt_subkey);
                                                                      if ( $@ ) 
                                                                      {
                                                                          AE::log error =>  "data forged!";
@@ -436,9 +436,9 @@
                                                           else
                                                           {
                                                               my $data_len_pt = pack("n",length($plain_data));
-                                                              my $data_len_ct_withtag = $encryptor ->ietf_encrypt($data_len_pt,"",$encrypt_nonce,$encrypt_subkey);
+                                                              my $data_len_ct_withtag = ($self->{method} =~ /^x/ ? $encryptor->can("xietf_encrypt") : $encryptor->can("ietf_encrypt"))->($encryptor, $data_len_pt,"",$encrypt_nonce,$encrypt_subkey);
                                                               $encrypt_nonce = $encrypt_nonce->increment();
-                                                              my $data_ct_withtag  =  $encryptor->ietf_encrypt($plain_data,"",$encrypt_nonce,$encrypt_subkey);
+                                                              my $data_ct_withtag  =  ($self->{method} =~ /^x/ ? $encryptor->can("xietf_encrypt") : $encryptor->can("ietf_encrypt"))->($encryptor, $plain_data,"",$encrypt_nonce,$encrypt_subkey);
                                                               $encrypt_nonce = $encrypt_nonce->increment();
                                                               $encrypted_data = $data_len_ct_withtag . $data_ct_withtag;
                                                               #carp length($encrypted_data);
@@ -530,7 +530,7 @@
                                                             my $data_len_pt;
                                                             eval
                                                             {
-                                                                $data_len_pt = $decryptor->ietf_decrypt($data_len_ct, "", $decrypt_nonce, $decrypt_subkey);
+                                                                $data_len_pt = ($self->{method} =~ /^x/ ? $decryptor->can("xietf_decrypt") : $decryptor->can("ietf_decrypt"))->($decryptor, $data_len_ct, "", $decrypt_nonce, $decrypt_subkey);
                                                             };
                                                             if ( $@ ) 
                                                             {
@@ -549,7 +549,7 @@
                                                                 else
                                                                 {
                                                                     $decrypt_nonce = $decrypt_nonce->increment();
-                                                                    $decrypted_data .= $decryptor->ietf_decrypt(substr($incoming_data,18,$data_len + 16),"",$decrypt_nonce,$decrypt_subkey);
+                                                                    $decrypted_data .= ($self->{method} =~ /^x/ ? $decryptor->can("xietf_decrypt") : $decryptor->can("ietf_decrypt"))->($decryptor, substr($incoming_data,18,$data_len + 16),"",$decrypt_nonce,$decrypt_subkey);
                                                                      if ( $@ ) 
                                                                      {
                                                                          AE::log error =>  "data forged!";
@@ -715,7 +715,7 @@ Version 0.9.3.4
 	camellia-128-cfb camellia-128-ctr camellia-128-ofb
 	camellia-192-cfb camellia-192-ctr camellia-192-ofb
 	camellia-256-cfb camellia-256-ctr camellia-256-ofb
-	chacha20-ietf chacha20-ietf-poly1305
+	chacha20-ietf chacha20-ietf-poly1305 xchacha20-ietf-poly1305
 	rc4-md5
 	rc6-128-cfb rc6-128-ctr rc6-128-ofb
 	rc6-192-cfb rc6-192-ctr rc6-192-ofb
@@ -726,16 +726,12 @@ Version 0.9.3.4
 
       bf-cfb chacha20 salsa20 
 
-3.The following ciphers recommended by Shadowsocks are not supported yet: 
- 
-      xchacha20-ietf-poly1305 
 
 Please note TLS 1.2 has removed IDEA and DES cipher suites. and because of 
 CVE-2016-2183,  http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2183
 , this module has removed all support for DES and 3DES ciphers. 
 
-Project website https://github.com/zhou0/shadowsocks-perl
-(Old link https://osdn.net/projects/ssperl/ was the link for the project from 2017 to 2025)
+Project website https://osdn.net/projects/ssperl/
 
 =head1 METHODS
 
