@@ -390,7 +390,8 @@ Please note TLS 1.2 has removed IDEA and DES cipher suites. and because of
 CVE-2016-2183,  http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2183
 , this module has removed all support for DES and 3DES ciphers. 
 
-Project website https://osdn.net/projects/ssperl/
+Project website https://github.com/zhou0/shadowsocks-perl
+(Old link https://osdn.net/projects/ssperl/ was the link for the project from 2017 to 2025)
 
 =head1 SEE ALSO
 
