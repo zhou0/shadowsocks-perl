@@ -26,7 +26,7 @@ DESCRIPTION
             camellia-128-cfb camellia-128-ctr camellia-128-ofb
             camellia-192-cfb camellia-192-ctr camellia-192-ofb
             camellia-256-cfb camellia-256-ctr camellia-256-ofb
-            chacha20-ietf chacha20-ietf-poly1305
+            chacha20-ietf chacha20-ietf-poly1305 xchacha20-ietf-poly1305
             rc4-md5
             rc6-128-cfb rc6-128-ctr rc6-128-ofb
             rc6-192-cfb rc6-192-ctr rc6-192-ofb

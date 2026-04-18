@@ -77,6 +77,7 @@ our %_ciphers =
         "camellia-256-ofb" => ['Camellia','ofb',32,16],
         "chacha20-ietf" => [undef,undef,32,12],
         "chacha20-ietf-poly1305" =>  [undef,undef,32,12],
+        "xchacha20-ietf-poly1305" => [undef,undef,32,32],
 #        "rabbit" => ['rabbit','stream',16,16],        
         "rc4-md5"  => ['arcfour','stream',16,16],
         "rc6-128-cfb" => ['RC6','cfb',16,16],
@@ -144,7 +145,7 @@ sub _initialize_cipher($$)
     my $_encrypt_nonce;
     my $_decrypt_nonce;
 
-    if($_method =~ /^chacha20/)
+    if($_method =~ /^(x)?chacha20/)
     {
         if ($_method eq 'chacha20-ietf')
          {
@@ -166,8 +167,8 @@ sub _initialize_cipher($$)
                 #carp ascii_to_hex($_encrypt_subkey);
                 $_decryptor = Crypt::NaCl::Sodium->aead();
                 $_iv = $_encrypt_salt;
-                $_encrypt_nonce = $_encryptor->ietf_nonce("\0");
-                $_decrypt_nonce = $_decryptor->ietf_nonce("\0");
+                $_encrypt_nonce = ($_method =~ /^x/) ? $_encryptor->xietf_nonce("\0") : $_encryptor->ietf_nonce("\0");
+                $_decrypt_nonce = ($_method =~ /^x/) ? $_decryptor->xietf_nonce("\0") : $_decryptor->ietf_nonce("\0");
                 #carp $_encrypt_nonce;
                 #carp ascii_to_hex($_encrypt_nonce);
         }
@@ -371,7 +372,7 @@ Shadowsocks is a secure transport protocol based on SOCKS Protocol Version 5 (RF
 	camellia-128-cfb camellia-128-ctr camellia-128-ofb
 	camellia-192-cfb camellia-192-ctr camellia-192-ofb
 	camellia-256-cfb camellia-256-ctr camellia-256-ofb
-	chacha20-ietf chacha20-ietf-poly1305
+	chacha20-ietf chacha20-ietf-poly1305 xchacha20-ietf-poly1305
 	rc4-md5
 	rc6-128-cfb rc6-128-ctr rc6-128-ofb
 	rc6-192-cfb rc6-192-ctr rc6-192-ofb
@@ -382,9 +383,6 @@ Shadowsocks is a secure transport protocol based on SOCKS Protocol Version 5 (RF
 
       bf-cfb chacha20 salsa20 
 
-3.The following ciphers recommended by Shadowsocks are not supported yet: 
- 
-      xchacha20-ietf-poly1305 
 
 Please note TLS 1.2 has removed IDEA and DES cipher suites. and because of 
 CVE-2016-2183,  http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2183

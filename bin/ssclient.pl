@@ -35,7 +35,7 @@ sub main::HELP_MESSAGE()
     print("\tcamellia-256-cfb camellia-256-ctr camellia-256-ofb\n");
     if ($^O ne "MSWin32")
     {
-        print("\tchacha20-ietf chacha20-ietf-poly1305\n");
+        print("\tchacha20-ietf chacha20-ietf-poly1305 xchacha20-ietf-poly1305\n");
     }
 #    print("\trabbit\n");
     print("\trc4-md5\n");
@@ -134,7 +134,7 @@ Usage: ssclient.pl -s SERVER_ADDR -p SERVER_PORT [-b LOCAL_ADDR]
 	camellia-128-cfb camellia-128-ctr camellia-128-ofb
 	camellia-192-cfb camellia-192-ctr camellia-192-ofb
 	camellia-256-cfb camellia-256-ctr camellia-256-ofb
-	chacha20-ietf chacha20-ietf-poly1305
+	chacha20-ietf chacha20-ietf-poly1305 xchacha20-ietf-poly1305
 	rc6-128-cfb rc6-128-ctr rc6-128-ofb
 	rc6-192-cfb rc6-192-ctr rc6-192-ofb
 	rc6-256-cfb rc6-256-ctr rc6-256-ofb
@@ -165,7 +165,7 @@ SOCKS Protocol Version 5 (RFC 1928 ).
 	camellia-128-cfb camellia-128-ctr camellia-128-ofb
 	camellia-192-cfb camellia-192-ctr camellia-192-ofb
 	camellia-256-cfb camellia-256-ctr camellia-256-ofb
-	chacha20-ietf chacha20-ietf-poly1305
+	chacha20-ietf chacha20-ietf-poly1305 xchacha20-ietf-poly1305
 	rc6-128-cfb rc6-128-ctr rc6-128-ofb
 	rc6-192-cfb rc6-192-ctr rc6-192-ofb
 	rc6-256-cfb rc6-256-ctr rc6-256-ofb
@@ -175,16 +175,12 @@ SOCKS Protocol Version 5 (RFC 1928 ).
 
         bf-cfb chacha20 salsa20 
 
-3.The following ciphers recommended by Shadowsocks are not supported yet:
-
-        xchacha20-ietf-poly1305
 
 Please note TLS 1.2 has removed IDEA and DES cipher suites. and because of
 CVE-2016-2183,  http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2183
 , this module has removed all support for DES and 3DES ciphers.
 
-Project website https://github.com/zhou0/shadowsocks-perl
-(Old link https://osdn.net/projects/ssperl/ was the link for the project from 2017 to 2025)
+Project website https://osdn.net/projects/ssperl/
 
 =head1 AUTHOR
 
